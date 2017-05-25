@@ -31,9 +31,6 @@ public class MenuScript : MonoBehaviour
     private bool screenFullActive;
     private Resolution[] resolutionsSupporteds;
 
-    /*public Dropdown GraphicsDD;
-    public Dropdown ResolutionsDD;
-    public Toggle WindowModeTG;*/
     [Space(5)]
 
     public Text GameplayTxt;
@@ -46,7 +43,7 @@ public class MenuScript : MonoBehaviour
     private float Volume;
     public Slider barraVolume;
     public Toggle SteroTG;
-    //public Slider VolumeSld;
+
 
     [Space(20)]
 
@@ -205,6 +202,8 @@ public class MenuScript : MonoBehaviour
         }
 
     }
+
+	//Salvar Preferencias
     public void SalvarPreferencias()
     {
         if (modeWindow.isOn == true)
@@ -225,6 +224,8 @@ public class MenuScript : MonoBehaviour
         AplicarPreferencias();
 
     }
+
+	//Aplicar Preferencias
     private void AplicarPreferencias()
     {
         Volume = PlayerPrefs.GetFloat("Volume");
@@ -239,7 +240,7 @@ public class MenuScript : MonoBehaviour
         
         if (SceneManager.GetActiveScene ().name != "Menu")
         {
-            AudioListener.volume = Volume;
+			AudioListener.volume = Volume;
             Destroy(gameObject);
         }
     }
