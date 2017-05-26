@@ -30,7 +30,6 @@ public class MenuScript : MonoBehaviour
     public Dropdown Resolucoes, Qualidades;
     private bool screenFullActive;
     private Resolution[] resolutionsSupporteds;
-
     [Space(5)]
 
     public Text GameplayTxt;
@@ -100,14 +99,14 @@ public class MenuScript : MonoBehaviour
 
     private void ChecarResolucoes()
     {
+		
         resolutionsSupporteds = Screen.resolutions;
         Resolucoes.options.Clear();
         for (int i = 0; i < resolutionsSupporteds.Length; i++)
         {
             Resolucoes.options.Add(new Dropdown.OptionData() { text = resolutionsSupporteds[i].width + "x" + resolutionsSupporteds[i].height });
-
         }
-        Resolucoes.captionText.text = "Resolucoes";
+		Resolucoes.captionText.text = "Resolucoes";
     }
     private void AjustarQualidades()
     {

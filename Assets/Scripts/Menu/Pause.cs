@@ -41,11 +41,6 @@ public class Pause : MonoBehaviour {
 		Configs.SetActive (false);
 		Configs2.SetActive (false);
 
-        Funcionalidades();
-        ChecarResolucoes();
-        AjustarQualidades();
-
-
     }
 
     // Update is called once per frame
@@ -64,6 +59,7 @@ public class Pause : MonoBehaviour {
 		Configs2.SetActive(true);
 		telaEscura.SetActive (true);
         Time.timeScale = 0;
+
 
     }
     public void ReturnGame()
@@ -93,7 +89,10 @@ public class Pause : MonoBehaviour {
 
         //Opções
 		Configs.SetActive(true);
- 
+		Funcionalidades();
+		ChecarResolucoes();
+		AjustarQualidades();
+
     }
 
 	//DENTRO DE OPÇÕES
