@@ -41,7 +41,6 @@ public class MenuScript : MonoBehaviour
     public Text AudioTxt;
     private float Volume;
     public Slider barraVolume;
-    public Toggle SteroTG;
 
 
     [Space(20)]
@@ -61,14 +60,16 @@ public class MenuScript : MonoBehaviour
     void Start()
     {
         Opcoes(false);
-        Funcionalidades();
-        ChecarResolucoes();
-        AjustarQualidades();
+        
 
     }
 
     public void Opcoes(bool hide)
     {
+		Funcionalidades();
+		ChecarResolucoes();
+		AjustarQualidades();
+
         TitleTxt.gameObject.SetActive(!hide);
         PlayBT.gameObject.SetActive(!hide);
         ConfigBT.gameObject.SetActive(!hide);
@@ -87,7 +88,6 @@ public class MenuScript : MonoBehaviour
 
         AudioTxt.gameObject.SetActive(hide);
         barraVolume.gameObject.SetActive(hide);
-        SteroTG.gameObject.SetActive(hide);
     }
     public void Jogar()
     {

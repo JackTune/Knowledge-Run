@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour {
 
-    public GameObject telaEscura;
+	public GameObject telaEscura, ScoreTxt;
 	public GameObject Configs, Configs2;
-    public Button buttonResume, buttonQuit, buttonOptions, buttonBackMenu, saveBT;
+	public Button buttonResume, buttonQuit, buttonOptions, buttonBackMenu, saveBT, buttonBackPause;
 	bool Pausado = true;
+	bool PauseOptions = false;
 
 	public Text VideoTxt;
 	public Toggle modeWindow;
@@ -29,38 +30,47 @@ public class Pause : MonoBehaviour {
 	public Text AudioTxt;
 	private float Volume;
 	public Slider barraVolume;
-	public Toggle SteroTG;
 
     private void Awake()
     {
         resolutionsSupporteds = Screen.resolutions;
+		Funcionalidades();
+		ChecarResolucoes();
+		AjustarQualidades();
     }
     // Use this for initialization
-    void Start () {
+	void Start () {
         telaEscura.SetActive(false);
 		Configs.SetActive (false);
 		Configs2.SetActive (false);
+
 
     }
 
     // Update is called once per frame
     void Update ()
     {
-		if (Input.GetKeyDown(KeyCode.Escape) & Pausado == true)
+		if (Input.GetKeyDown(KeyCode.Escape) & Pausado == true & PauseOptions == false)
         {
             Stop();
         }
+		else if(Input.GetKeyDown (KeyCode.Escape) & Pausado == false)
+			ReturnGame ();
     }
 
 	//Voids do Pause
     public void Stop()
     {
+		
+		Time.timeScale = 0;
+		ScoreTxt.SetActive (false);
         //Botões do pause
 		Configs2.SetActive(true);
+		Configs.SetActive (false);
 		telaEscura.SetActive (true);
-        Time.timeScale = 0;
+		Pausado = false;
 
-
+		buttonBackPause.gameObject.SetActive (false);
     }
     public void ReturnGame()
     {
@@ -68,7 +78,9 @@ public class Pause : MonoBehaviour {
 		telaEscura.SetActive(false);
 		Configs2.SetActive (false);
         Time.timeScale = 1;
+		ScoreTxt.SetActive (true);
 		Pausado = true;
+		PauseOptions = false;
     }
     public void Sair()
     {
@@ -78,16 +90,25 @@ public class Pause : MonoBehaviour {
     {
         SceneManager.LoadScene("Menu");
     }
-
+	public void BackPause()
+	{
+		ScoreTxt.SetActive (false);
+		Configs2.SetActive (true);
+		telaEscura.SetActive (true);
+		Pausado = false;
+		buttonBackPause.gameObject.SetActive (false);
+	}
 
 	//Void Botões de Opções
     public void Options() {
-
-		Pausado = false;
+		PauseOptions = true;
+		Pausado = true;
+		ScoreTxt.SetActive (false);
         //Butões do Pause
 		Configs2.SetActive(false);
 
         //Opções
+		buttonBackPause.gameObject.SetActive(true);
 		Configs.SetActive(true);
 		Funcionalidades();
 		ChecarResolucoes();
