@@ -8,7 +8,8 @@ public class PlayerScript : MonoBehaviour
 {
     Rigidbody2D rb;
     RaycastHit2D[] hitInfo;
-    Button botao;
+    Animator anim;
+
     bool hit;
     [Header("Jump")]
     [Space(5)]
@@ -54,12 +55,15 @@ public class PlayerScript : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         isDead = false;
     }
     private void Update()
     {
 		Jump();
         score = decimal.Round(Convert.ToDecimal(Time.fixedTime - TempoInicial), 2);
+
+        anim.SetBool("Ground", onGround);
         
         if (isDead)
         {

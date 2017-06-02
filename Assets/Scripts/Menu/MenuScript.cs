@@ -11,9 +11,12 @@ public class MenuScript : MonoBehaviour
     [Header("Menu Inicial")]
     [Space(5)]
 
-    public Text TitleTxt;
+    public RawImage BG;
     public Button PlayBT;
     public Button ConfigBT;
+    public Texture2D[] BGs;
+    public GameObject Inicial;
+
 
     [Space(20)]
 
@@ -21,7 +24,13 @@ public class MenuScript : MonoBehaviour
     [Space(5)]
 
     public Button BackButton, SaveBT;
+    public GameObject Configs;
 
+    [Header("Escolher Personagem")]
+    [Space(5)]
+    public GameObject GOEscolherPersonagem;
+
+    [Header("Objetos do Menu")]
     [Space(5)]
 
     public Text VideoTxt;
@@ -34,7 +43,6 @@ public class MenuScript : MonoBehaviour
 
     public Text GameplayTxt;
     public Text CharacterTxt;
-    public Dropdown SkinsDP;
 
     [Space(5)]
 
@@ -50,49 +58,72 @@ public class MenuScript : MonoBehaviour
 
     public string[] Cenas;
 
+    [Header("Audio")]
+    [Space(5)]
+    public GameObject audioGO;
+    AudioSource audio;
+
+    
+
 
 
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
+        DontDestroyOnLoad(audioGO);
         resolutionsSupporteds = Screen.resolutions;
     }
     void Start()
     {
         Opcoes(false);
         
+        audio = audioGO.GetComponent<AudioSource>();
 
     }
 
     public void Opcoes(bool hide)
     {
+        if (hide)
+            BG.texture = BGs[2];
+        else
+            BG.texture = BGs[0];
+
 		Funcionalidades();
 		ChecarResolucoes();
 		AjustarQualidades();
 
-        TitleTxt.gameObject.SetActive(!hide);
-        PlayBT.gameObject.SetActive(!hide);
-        ConfigBT.gameObject.SetActive(!hide);
+        //PlayBT.gameObject.SetActive(!hide);
+        //ConfigBT.gameObject.SetActive(!hide);
 
-        BackButton.gameObject.SetActive(hide);
-        SaveBT.gameObject.SetActive(hide);
+        Inicial.SetActive(!hide);
+        Configs.SetActive(hide);
+        GOEscolherPersonagem.SetActive(false);
+        //BackButton.gameObject.SetActive(hide);
+        //SaveBT.gameObject.SetActive(hide);
 
-        VideoTxt.gameObject.SetActive(hide);
-        Qualidades.gameObject.SetActive(hide);
-        Resolucoes.gameObject.SetActive(hide);
-        modeWindow.gameObject.SetActive(hide);
+        //VideoTxt.gameObject.SetActive(hide);
+        //Qualidades.gameObject.SetActive(hide);
+        //Resolucoes.gameObject.SetActive(hide);
+        //modeWindow.gameObject.SetActive(hide);
 
-        GameplayTxt.gameObject.SetActive(hide);
-        CharacterTxt.gameObject.SetActive(hide);
-        SkinsDP.gameObject.SetActive(hide);
+        //GameplayTxt.gameObject.SetActive(hide);
+        //CharacterTxt.gameObject.SetActive(hide);
 
-        AudioTxt.gameObject.SetActive(hide);
-        barraVolume.gameObject.SetActive(hide);
+        //AudioTxt.gameObject.SetActive(hide);
+        //barraVolume.gameObject.SetActive(hide);
     }
     public void Jogar()
     {
         MyMethods.ChangeScenes(Cenas);
         PlayerScript.TempoInicial = Time.fixedTime;
+        audio.Play();
+    }
+    public void EscolherPersonagem()
+    {
+        BG.texture = BGs[1];
+        Inicial.SetActive(false);
+        Configs.SetActive(false);
+        GOEscolherPersonagem.SetActive(true);
     }
 
     //Voids de checagem

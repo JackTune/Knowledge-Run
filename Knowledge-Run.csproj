@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\GameScenes\SetOffset.cs" />
     <Compile Include="Assets\Scripts\GameScenes\Spawner.cs" />
     <Compile Include="Assets\Scripts\GameScenes\TeacherScript.cs" />
+    <Compile Include="Assets\Scripts\Menu\EscolherPersonagem.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuScript.cs" />
     <Compile Include="Assets\Scripts\Menu\Pause.cs" />
     <Compile Include="Assets\Scripts\MyClasses\MyMethods.cs" />

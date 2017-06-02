@@ -13,7 +13,7 @@ namespace Assets.Scripts
 
         public static string LastScene { get; set; }
         public static Pergunta[] perguntas;
-        static int numeroCenas = 2;
+        static int numeroCenas = 5;
         public static int cenaAtual = 0;
 
         
