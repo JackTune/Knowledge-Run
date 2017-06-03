@@ -92,25 +92,16 @@ public class MenuScript : MonoBehaviour
 		ChecarResolucoes();
 		AjustarQualidades();
 
-        //PlayBT.gameObject.SetActive(!hide);
-        //ConfigBT.gameObject.SetActive(!hide);
 
         Inicial.SetActive(!hide);
         Configs.SetActive(hide);
         GOEscolherPersonagem.SetActive(false);
-        //BackButton.gameObject.SetActive(hide);
-        //SaveBT.gameObject.SetActive(hide);
-
-        //VideoTxt.gameObject.SetActive(hide);
-        //Qualidades.gameObject.SetActive(hide);
-        //Resolucoes.gameObject.SetActive(hide);
-        //modeWindow.gameObject.SetActive(hide);
-
-        //GameplayTxt.gameObject.SetActive(hide);
-        //CharacterTxt.gameObject.SetActive(hide);
-
-        //AudioTxt.gameObject.SetActive(hide);
-        //barraVolume.gameObject.SetActive(hide);
+    }
+    public void VoltarConfigs()
+    {
+        Inicial.SetActive(false);
+        Configs.SetActive(true);
+        GOEscolherPersonagem.SetActive(false);
     }
     public void Jogar()
     {

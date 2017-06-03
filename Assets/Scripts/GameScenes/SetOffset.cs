@@ -13,7 +13,7 @@ public class SetOffset : MonoBehaviour
     [Space(20)]
     //Prefabs
     [Header("Prefabs")]
-    public GameObject door;
+    public GameObject[] Personagens;
     
     public static float Speed
     {
@@ -30,9 +30,11 @@ public class SetOffset : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+        int index = PlayerPrefs.GetInt("Personagem");
+        Instantiate(Personagens[index]);
+
         speed = 0.5f;
         image = GetComponent<RawImage>();
-        Instantiate(door, Vector3.zero, Quaternion.identity);
         ImgSize = image.texture.width / 100;
     }
 

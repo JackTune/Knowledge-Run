@@ -6,10 +6,11 @@ public class EscolherPersonagem : MonoBehaviour
 {
     public GameObject[] Personagens;
     GameObject PersonagemEscolhido;
+    Rigidbody2D playerRB;
     int index;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         index = 0;
 	}
@@ -17,15 +18,25 @@ public class EscolherPersonagem : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (!PersonagemEscolhido)
+        if (PersonagemEscolhido == null)
         {
-            PersonagemEscolhido = Personagens[index];
+            PersonagemEscolhido = Instantiate(Personagens[index]);
+            playerRB = PersonagemEscolhido.GetComponent<Rigidbody2D>();
+            playerRB.gravityScale = 0;
+
+            PlayerPrefs.SetInt("Personagem", index);
         }
-		
+        
 	}
 
     public void ChangeIndex(int index)
     {
         this.index = index;
+        Destroy(PersonagemEscolhido);
+        PersonagemEscolhido = Instantiate(Personagens[index]);
+        playerRB = PersonagemEscolhido.GetComponent<Rigidbody2D>();
+        playerRB.gravityScale = 0;
+
+        PlayerPrefs.SetInt("Personagem", index);
     }
 }
