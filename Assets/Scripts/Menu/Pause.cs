@@ -95,6 +95,7 @@ public class Pause : MonoBehaviour
     }
     public void BackMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }
     public void BackPause()

@@ -78,8 +78,8 @@ public class MenuScript : MonoBehaviour
         Opcoes(false);
         
         audio = audioGO.GetComponent<AudioSource>();
-
     }
+    
 
     public void Opcoes(bool hide)
     {
@@ -97,17 +97,14 @@ public class MenuScript : MonoBehaviour
         Configs.SetActive(hide);
         GOEscolherPersonagem.SetActive(false);
     }
-    public void VoltarConfigs()
-    {
-        Inicial.SetActive(false);
-        Configs.SetActive(true);
-        GOEscolherPersonagem.SetActive(false);
-    }
+
     public void Jogar()
     {
         MyMethods.ChangeScenes(Cenas);
         PlayerScript.TempoInicial = Time.fixedTime;
+
         audio.Play();
+        
     }
     public void EscolherPersonagem()
     {
@@ -258,11 +255,12 @@ public class MenuScript : MonoBehaviour
     //Update
     void Update()
     {
-        
-        if (SceneManager.GetActiveScene ().name != "Menu")
+
+        if (SceneManager.GetActiveScene().name != "Menu")
         {
-			AudioListener.volume = Volume;
+            //AudioListener.volume = Volume;
             Destroy(gameObject);
         }
+        AudioListener.volume = Volume;
     }
 }
