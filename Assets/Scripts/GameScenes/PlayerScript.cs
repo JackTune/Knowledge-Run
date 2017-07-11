@@ -67,7 +67,6 @@ public class PlayerScript : MonoBehaviour
         
         if (isDead)
         {
-            SetOffset.Speed = 0;
             SceneManager.LoadScene("Hitted");
         }
     }

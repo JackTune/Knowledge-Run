@@ -15,6 +15,7 @@ namespace Assets.Scripts
         public static Pergunta[] perguntas;
         static int numeroCenas = 5;
         public static int cenaAtual = 0;
+        public static Usuario User { get; set; }
 
         
         public static Pergunta[] GetPerguntas()

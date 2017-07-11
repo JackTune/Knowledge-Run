@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 using System.Linq;
 using Assets.Scripts;
 
@@ -16,6 +17,7 @@ public class MenuScript : MonoBehaviour
     public Button ConfigBT;
     public Texture2D[] BGs;
     public GameObject Inicial;
+    public Text bemvindo;
 
 
     [Space(20)]
@@ -61,9 +63,9 @@ public class MenuScript : MonoBehaviour
     [Header("Audio")]
     [Space(5)]
     public GameObject audioGO;
-    AudioSource audio;
+    AudioSource audioS;
 
-    
+
 
 
 
@@ -77,7 +79,19 @@ public class MenuScript : MonoBehaviour
     {
         Opcoes(false);
         
-        audio = audioGO.GetComponent<AudioSource>();
+        audioS = audioGO.GetComponent<AudioSource>();
+
+        string nome = "";
+        try
+        {
+            nome = MyMethods.User.Nome.Split(' ')[0];
+        }
+        catch (NullReferenceException)
+        {
+            nome = "Guest";
+        }
+
+        bemvindo.text = bemvindo.text.Replace("(nome usuário)", nome);
     }
     
 
@@ -87,6 +101,7 @@ public class MenuScript : MonoBehaviour
             BG.texture = BGs[2];
         else
             BG.texture = BGs[0];
+
 
 		Funcionalidades();
 		ChecarResolucoes();
@@ -103,7 +118,7 @@ public class MenuScript : MonoBehaviour
         MyMethods.ChangeScenes(Cenas);
         PlayerScript.TempoInicial = Time.fixedTime;
 
-        audio.Play();
+        audioS.Play();
         
     }
     public void EscolherPersonagem()
@@ -251,6 +266,11 @@ public class MenuScript : MonoBehaviour
         Screen.SetResolution(resolutionsSupporteds[resolutionSaveIndex].width, resolutionsSupporteds[resolutionSaveIndex].height, screenFullActive);
     }
 
+    public void Mudo()
+    {
+        PlayerPrefs.SetFloat("Volume", 0);
+        AplicarPreferencias();
+    }
 
     //Update
     void Update()

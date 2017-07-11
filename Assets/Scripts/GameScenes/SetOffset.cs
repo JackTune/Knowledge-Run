@@ -33,7 +33,6 @@ public class SetOffset : MonoBehaviour
         int index = PlayerPrefs.GetInt("Personagem");
         Instantiate(Personagens[index]);
 
-        speed = 0.5f;
         image = GetComponent<RawImage>();
         ImgSize = image.texture.width / 100;
     }
@@ -45,5 +44,8 @@ public class SetOffset : MonoBehaviour
         Rect scroll = image.uvRect;
         scroll.x += speed * Time.deltaTime;
         image.uvRect = scroll;
+
+        speed += 0.00005f;
+        Debug.Log(speed);
     }
 }

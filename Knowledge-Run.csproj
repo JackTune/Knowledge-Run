@@ -79,6 +79,9 @@
     <Reference Include="MySql.Data">
       <HintPath>Assets\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="system.data">
+      <HintPath>Assets\system.data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameScenes\DoorScript.cs" />
@@ -90,11 +93,14 @@
     <Compile Include="Assets\Scripts\GameScenes\SetOffset.cs" />
     <Compile Include="Assets\Scripts\GameScenes\Spawner.cs" />
     <Compile Include="Assets\Scripts\GameScenes\TeacherScript.cs" />
+    <Compile Include="Assets\Scripts\Menu\Cadastrar.cs" />
     <Compile Include="Assets\Scripts\Menu\EscolherPersonagem.cs" />
+    <Compile Include="Assets\Scripts\Menu\Login.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuScript.cs" />
     <Compile Include="Assets\Scripts\Menu\Pause.cs" />
     <Compile Include="Assets\Scripts\MyClasses\MyMethods.cs" />
     <Compile Include="Assets\Scripts\MyClasses\Pergunta.cs" />
+    <Compile Include="Assets\Scripts\MyClasses\Usuario.cs" />
     <Compile Include="Assets\Scripts\QuestionScreen\Responder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

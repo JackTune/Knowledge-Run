@@ -96,6 +96,7 @@ public class Pause : MonoBehaviour
     public void BackMenu()
     {
         Time.timeScale = 1;
+        Destroy(GameObject.FindGameObjectWithTag("Audio"));
         SceneManager.LoadScene("Menu");
     }
     public void BackPause()

@@ -25,10 +25,14 @@ public class TeacherScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            ChangeScene(/*Scenes*/);
+            ChangeScene();
+        }
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(collision.gameObject);
         }
     }
-    public void ChangeScene(/*string[] Scenes*/)
+    public void ChangeScene()
     {
         SceneManager.LoadScene("Pergunta");
     }
