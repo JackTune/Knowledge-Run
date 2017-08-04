@@ -77,6 +77,7 @@ public class MenuScript : MonoBehaviour
     }
     void Start()
     {
+        ConectarBanco.Conectar();
         Opcoes(false);
         
         audioS = audioGO.GetComponent<AudioSource>();

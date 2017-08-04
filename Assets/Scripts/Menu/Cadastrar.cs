@@ -8,33 +8,25 @@ using UnityEngine.SceneManagement;
 
 public class Cadastrar : MonoBehaviour
 {
-    private string source;
-    private MySqlConnection conexao;
     public InputField nome, email, senha, confirmacao;
     public Button cadastrar;
 
     //Use this for initialization
     void Start()
     {
-        source = "Server=localhost;" +
-                 "Database=knowledgerun;" +
-                 "User ID=root;" +
-                 "Pooling=false;" +
-                 "Password=;";
-
-        ConectarBanco(source);
+        ConectarBanco.Conectar();
     }
 
 
-    void ConectarBanco(string _source)
-    {
-        conexao = new MySqlConnection(_source);
-        conexao.Open();
-    }
+    //void ConectarBanco(string _source)
+    //{
+    //    conexao = new MySqlConnection(_source);
+    //    conexao.Open();
+    //}
 
     public void Insert()
     {
-        MySqlCommand comando = conexao.CreateCommand();
+        MySqlCommand comando = ConectarBanco.Conexao.CreateCommand();
 
         string complemento = "default, '" + nome.text + "', '" + email.text + "', '" + senha.text + "')";
 
@@ -56,7 +48,7 @@ public class Cadastrar : MonoBehaviour
     public int GetID(string nome)
     {
         int id = 0;
-        MySqlCommand select = conexao.CreateCommand();
+        MySqlCommand select = ConectarBanco.Conexao.CreateCommand();
 
         select.CommandText = "SELECT id FROM cadastros WHERE nome = '" + nome + "'";
 

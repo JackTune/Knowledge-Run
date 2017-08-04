@@ -30,9 +30,6 @@ namespace Assets.Scripts
                 case "PortBG": string[] alternativasPort = { "Não","Sim","Talvez","Nda"};
                     perguntas[0] = new Pergunta("Português", "Sim é não?", alternativasPort, "Não");
                     break;
-                case "BioBG": string[] alternativasBio = { "Sim", "Não", "Talvez", "Nda" };
-                    perguntas[0] = new Pergunta("Biologia", "Vírus são seres vivos?", alternativasBio, "Não");
-                    break;
             }
             return perguntas;
         }

@@ -19,6 +19,16 @@ public class TeacherScript : MonoBehaviour
     private void Update()
     {
         rb.velocity = new Vector2(SetOffset.Speed * SetOffset.ImgSize, rb.velocity.y);
+
+        int j = 0;
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            if (SceneManager.GetSceneAt(i).name.Contains("BG"))
+            {
+                Scenes[j] = SceneManager.GetSceneAt(i).name;
+                j++;
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

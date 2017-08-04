@@ -51,7 +51,7 @@ public class Spawner : MonoBehaviour
     private void Spawn(GameObject prefab)
     {
         float positionX = transform.position.x;
-        float positionY = prefab.GetComponent<SpriteRenderer>().bounds.size.y / 2;
+        float positionY = transform.position.y + prefab.GetComponent<SpriteRenderer>().bounds.size.y / 2;
 
         Vector3 position = new Vector3(positionX, positionY);
 

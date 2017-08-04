@@ -10,39 +10,19 @@ using System.Net.Sockets;
 
 public class Login : MonoBehaviour
 {
-    string source;
-    MySqlConnection conexao;
     public InputField login, senha;
 
 
     // Use this for initialization
     private void Start()
     {
-        source = "Server=localhost;" +
-         "Database=knowledgerun;" +
-         "User ID=root;" +
-         "Pooling=false;" +
-         "Password=;";
-
-        try
-        {
-            ConectarBanco(source);
-        }
-        catch (Exception)
-        {
-            Debug.Log("Servidor offline");
-        }
+        ConectarBanco.Conectar();
     }
 
-    void ConectarBanco(string source)
-    {
-        conexao = new MySqlConnection(source);
-        conexao.Open();
-    }
 
     public void ChecarLogin()
     {
-        MySqlCommand select = conexao.CreateCommand();
+        MySqlCommand select = ConectarBanco.Conexao.CreateCommand();
         select.CommandText = "SELECT * FROM cadastros WHERE (nome = '" + login.text + "' OR email = '" + login.text + "')";
 
         MySqlDataReader reader = select.ExecuteReader();

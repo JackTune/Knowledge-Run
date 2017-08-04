@@ -9,7 +9,7 @@ using Assets.Scripts;
 
 public class Responder : MonoBehaviour
 {
-    Pergunta[] perguntas;
+    Pergunta perguntaP;
     [Header("Game Scenes")]
     public string[] Scenes;
     [Space(20)]
@@ -31,19 +31,23 @@ public class Responder : MonoBehaviour
 
     void Start ()
     {
-        perguntas = MyMethods.GetPerguntas();
-        MyMethods.ShuffleArray(perguntas[0].Alternativas);
+        string materia = MyMethods.LastScene;
 
-		pergunta.text = perguntas[0].Enunciado;
-        for (int i = 0; i < perguntas[0].Alternativas.Length; i++)
+        perguntaP = Pergunta.GetPerguntas(materia);
+        MyMethods.ShuffleArray(perguntaP.Alternativas);
+
+        pergunta.text = perguntaP.Enunciado;
+
+
+        for (int i = 0; i < perguntaP.Alternativas.Length; i++)
         {
-            Respostas[i].text = perguntas[0].Alternativas[i];
+            Respostas[i].text = perguntaP.Alternativas[i];
         }
     }
 
     public void ChecarBotao(Button buttons)
     {
-        if (buttons.GetComponentInChildren<Text>().text != perguntas[0].AlternativaCorreta)
+        if (buttons.GetComponentInChildren<Text>().text != perguntaP.AlternativaCorreta)
         {
             DesabilitarButoes(botoes);
             StartCoroutine(DelayDeErro(5));
