@@ -51,10 +51,18 @@ public class Spawner : MonoBehaviour
     private void Spawn(GameObject prefab)
     {
         float positionX = transform.position.x;
-        float positionY = transform.position.y + prefab.GetComponent<SpriteRenderer>().bounds.size.y / 2;
+        float positionY;
+        try
+        {
+            positionY = transform.position.y;
+        }
+        catch (MissingComponentException)
+        {
+            positionY = transform.position.y;
+        }
 
         Vector3 position = new Vector3(positionX, positionY);
 
-        Instantiate(prefab, position, Quaternion.identity);
+        Instantiate(prefab, this.transform.position/* position*/, Quaternion.identity);
     }
 }
