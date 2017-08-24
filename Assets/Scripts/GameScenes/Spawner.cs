@@ -63,6 +63,6 @@ public class Spawner : MonoBehaviour
 
         Vector3 position = new Vector3(positionX, positionY);
 
-        Instantiate(prefab, this.transform.position/* position*/, Quaternion.identity);
+        Instantiate(prefab, position, Quaternion.identity);
     }
 }

@@ -46,6 +46,6 @@ public class SetOffset : MonoBehaviour
         image.uvRect = scroll;
 
         speed += 0.00005f;
-        Debug.Log(speed);
+        //Debug.Log(speed);
     }
 }
